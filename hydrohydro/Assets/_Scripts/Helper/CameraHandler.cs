@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraHandler : MonoBehaviour
 {
     [HideInInspector] public Transform target;
     public float smoothSpeed = 0.125f;
