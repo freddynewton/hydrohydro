@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Playercontroller : MonoBehaviour
 {
+    public static Playercontroller Instance { get; private set; }
+
     private Unit unit;
     private Vector2 inputVector;
-    private Camera camera;
+    private Camera cameraMain;
     private Rigidbody2D rb;
 
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        camera = Camera.main;
+        cameraMain = Camera.main;
         unit = gameObject.GetComponent<Unit>();
     }
 
@@ -47,10 +49,23 @@ public class Playercontroller : MonoBehaviour
 
     private void LookAtMouse()
     {
-        Vector3 worldPos = camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldPos = cameraMain.ScreenToWorldPoint(Input.mousePosition);
         if (worldPos.x <= gameObject.transform.position.x)
             unit.GFX.transform.rotation = Quaternion.Slerp(unit.GFX.transform.rotation, Quaternion.Euler(0, -180, 0), 0.1f);
         else
             unit.GFX.transform.rotation = Quaternion.Slerp(unit.GFX.transform.rotation, Quaternion.Euler(0, 0, 0), 0.1f);
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

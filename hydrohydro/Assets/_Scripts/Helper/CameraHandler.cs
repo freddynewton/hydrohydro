@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraHandler : MonoBehaviour
 {
     [HideInInspector] public Transform target;
-    public float smoothSpeed = 0.125f;
+    public float smoothSpeed = 30;
     public Vector3 offset;
 
     private void Start()
@@ -13,12 +13,12 @@ public class CameraHandler : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if (target != null)
         {
             Vector3 deiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, deiredPosition, smoothSpeed);
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, deiredPosition, smoothSpeed * Time.deltaTime);
             transform.position = smoothedPosition;
         }
     }
