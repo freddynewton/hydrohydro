@@ -990,7 +990,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10
+      scalar: 15
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4858,7 +4858,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 111
+  m_SortingOrder: 99
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4898,6 +4898,7 @@ GameObject:
   - component: {fileID: 1425815094218712233}
   - component: {fileID: 1829693452}
   - component: {fileID: 1829693453}
+  - component: {fileID: 809679327}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4932,6 +4933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad804c4538208cf4ab5adf34b52d43fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  cameraMain: {fileID: 0}
 --- !u!114 &4626470564188726162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4999,3 +5002,17 @@ CircleCollider2D:
   m_Offset: {x: -0.000000007450581, y: -0.0075591505}
   serializedVersion: 2
   m_Radius: 0.06770178
+--- !u!114 &809679327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042582841439643655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6b4ffdb492cd344b0d2ddc17b115b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: {fileID: 0}
+  curWeaponScript: {fileID: 0}

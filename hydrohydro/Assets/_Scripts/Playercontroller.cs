@@ -6,10 +6,11 @@ public class Playercontroller : MonoBehaviour
 {
     public static Playercontroller Instance { get; private set; }
 
-    private Unit unit;
+    [HideInInspector] public Unit unit;
     private Vector2 inputVector;
-    private Camera cameraMain;
+    [HideInInspector] public Camera cameraMain;
     private Rigidbody2D rb;
+    private Vector3 worldPos;
 
     private void Start()
     {
@@ -20,9 +21,18 @@ public class Playercontroller : MonoBehaviour
 
     private void Update()
     {
+        worldPos = cameraMain.ScreenToWorldPoint(Input.mousePosition);
+        inputs();
         movementInputs();
         move();
+        weaponLookAtMouse();
         LookAtMouse();
+    }
+
+    private void inputs()
+    {
+        if (Inventory.Instance.currentWeapon != null && Input.GetKeyDown(KeyCode.Mouse0))
+            Inventory.Instance.curWeaponScript.shoot();
     }
 
     private void movementInputs()
@@ -49,11 +59,20 @@ public class Playercontroller : MonoBehaviour
 
     private void LookAtMouse()
     {
-        Vector3 worldPos = cameraMain.ScreenToWorldPoint(Input.mousePosition);
         if (worldPos.x <= gameObject.transform.position.x)
-            unit.GFX.transform.rotation = Quaternion.Slerp(unit.GFX.transform.rotation, Quaternion.Euler(0, -180, 0), 0.1f);
+            unit.GFX.transform.rotation = Quaternion.Slerp(unit.GFX.transform.rotation, Quaternion.Euler(0, -180, 0), 6f * Time.deltaTime);
         else
-            unit.GFX.transform.rotation = Quaternion.Slerp(unit.GFX.transform.rotation, Quaternion.Euler(0, 0, 0), 0.1f);
+            unit.GFX.transform.rotation = Quaternion.Slerp(unit.GFX.transform.rotation, Quaternion.Euler(0, 0, 0), 6f * Time.deltaTime);
+    }
+
+    private void weaponLookAtMouse()
+    {
+        
+        Vector3 dir = worldPos - Inventory.Instance.currentWeapon.transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        
+        Inventory.Instance.currentWeapon.transform.rotation = Quaternion.Slerp(Inventory.Instance.currentWeapon.transform.rotation, rotation, 6f * Time.deltaTime);
     }
 
     private void Awake()
