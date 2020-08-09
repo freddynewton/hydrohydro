@@ -4,22 +4,49 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public float speed;
+    public Sprite muzzleFlash;
 
-    // Start is called before the first frame update
-    void Start()
+    public int framesToFlash = 3;
+    public float destroyTime = 3;
+
+    private SpriteRenderer spriteRend;
+    private Sprite defaultSprite;
+
+    private void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        spriteRend = GetComponent<SpriteRenderer>();
+        defaultSprite = spriteRend.sprite;
+
+        StartCoroutine(FlashMuzzleFlash());
+    }
+
+    IEnumerator FlashMuzzleFlash()
+    {
+        spriteRend.sprite = muzzleFlash;
+
+        for (int i = 0; i < framesToFlash; i++)
+        {
+            yield return 0;
+        }
+
+        spriteRend.sprite = defaultSprite;
+    }
+
+    public void Update()
+    {
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other);
+
         Destroy(gameObject);
     }
 
     private void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, destroyTime);
     }
 }

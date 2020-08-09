@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerUnit : Unit
 {
+    public GameObject weaponPos;
+
     // Start is called before the first frame update
     void Start()
     {

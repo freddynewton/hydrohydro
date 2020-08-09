@@ -19,11 +19,22 @@ public class Weapon : MonoBehaviour
     public float projectileForce = 20f;
     public float accuracy = 1;
 
-    //Timer
+    //Private
     private float timer;
+    private Vector3 mousePos;
+    private Camera cameraMain;
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        cameraMain = Camera.main;
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
+        mousePos = cameraMain.ScreenToWorldPoint(Input.mousePosition);
+
         if (timer >= 0)
             timer -= Time.deltaTime;
     }
@@ -32,9 +43,15 @@ public class Weapon : MonoBehaviour
     {
         if (timer <= 0)
         {
-            GameObject bullet = Instantiate(Projectile, Inventory.Instance.currentWeapon.transform.position, Inventory.Instance.currentWeapon.transform.rotation, null) as GameObject;
-            Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
-            rbBullet.AddForce(Inventory.Instance.currentWeapon.transform.right * projectileForce, ForceMode2D.Impulse);
+            Vector3 dir = mousePos - Inventory.Instance.currentWeapon.transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            GameObject bullet = Instantiate(Projectile, Inventory.Instance.currentWeapon.transform.position + Vector3.forward, rotation, null) as GameObject;
+            
+            bullet.GetComponent<Projectile>().speed = projectileForce;
+
+            timer = attackRate;
         }
     }
 }

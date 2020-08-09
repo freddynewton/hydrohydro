@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1270907702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270907703}
+  m_Layer: 0
+  m_Name: WeaponPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1270907703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270907702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03, y: -0.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1485739287}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485739286
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +60,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1270907703}
   m_Father: {fileID: 9042582841439643653}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53,7 +84,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4898,7 +4929,7 @@ GameObject:
   - component: {fileID: 1425815094218712233}
   - component: {fileID: 1829693452}
   - component: {fileID: 1829693453}
-  - component: {fileID: 809679327}
+  - component: {fileID: 748668657}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4953,6 +4984,7 @@ MonoBehaviour:
   currentHealth: 0
   isMoving: 0
   canInteract: 0
+  weaponPos: {fileID: 1270907702}
 --- !u!114 &1425815094218712233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5002,7 +5034,7 @@ CircleCollider2D:
   m_Offset: {x: -0.000000007450581, y: -0.0075591505}
   serializedVersion: 2
   m_Radius: 0.06770178
---- !u!114 &809679327
+--- !u!114 &748668657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5011,8 +5043,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9042582841439643655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe6b4ffdb492cd344b0d2ddc17b115b0, type: 3}
+  m_Script: {fileID: 11500000, guid: ed459b2e4272f984693bc6810f5fa75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 0}
-  curWeaponScript: {fileID: 0}

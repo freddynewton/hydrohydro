@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4181862338269257132}
   - component: {fileID: 4181862338269257133}
   - component: {fileID: 4181862338269257123}
-  - component: {fileID: 4181862338269257122}
-  - component: {fileID: 4181862338269257121}
+  - component: {fileID: 3361040971266715197}
+  - component: {fileID: 8696288555617591290}
   m_Layer: 0
   m_Name: blue_projectile
   m_TagString: Untagged
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 98
-  m_Sprite: {fileID: 21300000, guid: bccba2f2c114ecb4ebd66e64de5fb5a5, type: 3}
+  m_SortingOrder: 115
+  m_Sprite: {fileID: 21300000, guid: 189f2795a291e2143bdb7edc2887b235, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,28 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6aa96aa4967ec04b8c18f653f42d96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &4181862338269257122
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4181862338269257134}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &4181862338269257121
+  speed: 0
+  muzzleFlash: {fileID: 21300000, guid: 6340aa3e4ac062d499fcae1825f6ecae, type: 3}
+  framesToFlash: 5
+  destroyTime: 3
+--- !u!61 &3361040971266715197
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,12 +118,53 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.04, y: 0.1}
+    oldSize: {x: 0.1, y: 0.04}
     newSize: {x: 0.04, y: 0.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.1}
+  m_Size: {x: 0.1, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &8696288555617591290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4181862338269257134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 2
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 1
+  m_Color: {r: 0.56078434, g: 0.827451, b: 1, a: 1}
+  m_Intensity: 0.3
+  m_LightVolumeOpacity: 1
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 21300000, guid: 189f2795a291e2143bdb7edc2887b235, type: 3}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0.6
+  m_ShadowVolumeIntensity: 0.6
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 0.15
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 48
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 0.1
+  m_ShapeLightFalloffSize: 3.19
+  m_ShapeLightFalloffOffset: {x: -0.83, y: 0}
+  m_ShapePath:
+  - {x: -0.06430775, y: -0.02683279, z: 0}
+  - {x: 0.059972346, y: -0.02883178, z: 0}
+  - {x: 0.059218526, y: 0.030861855, z: 0}
+  - {x: -0.06543881, y: 0.03364259, z: 0}

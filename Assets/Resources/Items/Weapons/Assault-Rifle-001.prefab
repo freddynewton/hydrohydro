@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2627060362446298077}
   - component: {fileID: 2627060362446298066}
   - component: {fileID: 103161058029090976}
+  - component: {fileID: -2553928465248819131}
   m_Layer: 0
   m_Name: Assault-Rifle-001
   m_TagString: Untagged
@@ -51,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,9 +97,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 4181862338269257134, guid: e5b7e94594e70414e956febb653e33e7, type: 3}
-  attackRate: 1
+  flashlight: {fileID: 0}
+  attackRate: 0.3
   shootKnockback: 0.2
   screenShake: 0
   screenshakeAmount: 0
-  projectileForce: 2.5
+  projectileForce: 4
   accuracy: 2
+--- !u!50 &-2553928465248819131
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627060362446298067}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
