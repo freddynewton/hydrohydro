@@ -5,7 +5,11 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Objects")]
-    public GameObject Projectile;
+    public Bullet bullet;
+    public GameObject muzzleFlash;
+    private Animator muzzleAnimator;
+    private Animator animator;
+    private BulletPool bulletPool;
 
     [Header("Weapon Stats")]
     public float attackRate = 1;
@@ -29,6 +33,9 @@ public class Weapon : MonoBehaviour
     {
         cameraMain = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+        bulletPool = GetComponent<BulletPool>();
+        animator = GetComponent<Animator>();
+        muzzleAnimator = muzzleFlash.GetComponent<Animator>();
     }
 
     private void Update()
@@ -43,13 +50,11 @@ public class Weapon : MonoBehaviour
     {
         if (timer <= 0)
         {
-            Vector3 dir = mousePos - Inventory.Instance.currentWeapon.transform.position;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            animator.SetTrigger("shoot");
+            muzzleAnimator.SetTrigger("shoot");
+            bulletPool.SpawnBullet(bullet, Inventory.Instance.currentWeapon.transform.position, Inventory.Instance.currentWeapon.transform.right);
 
-            GameObject bullet = Instantiate(Projectile, Inventory.Instance.currentWeapon.transform.position + Vector3.forward, rotation, null) as GameObject;
-            
-            bullet.GetComponent<Projectile>().speed = projectileForce;
+            Playercontroller.Instance.rb.AddForce((Playercontroller.Instance.gameObject.transform.position - mousePos) * shootKnockback);
 
             timer = attackRate;
         }

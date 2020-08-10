@@ -10,7 +10,7 @@ public class Playercontroller : MonoBehaviour
     [HideInInspector] public Camera cameraMain;
     [HideInInspector] public Vector3 mousePos;
 
-    private Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
     private Vector2 inputVector;
 
 

@@ -58,7 +58,7 @@ public class BulletPool : MonoBehaviour
 
             for (int i = 0; i < setting.NumBullets; ++i)
             {
-                var t = Instantiate(setting.BulletPF, transform);
+                var t = Instantiate(setting.BulletPF, Inventory.Instance.transform);
                 t.gameObject.SetActive(false);
                 _bullets[setting].Add(new BulletContainer { Transform = t, Time = 0 });
             }
@@ -105,7 +105,7 @@ public class BulletPool : MonoBehaviour
                 {
                     // move the bullet forwards
                     bulletContainer.Transform.position +=
-                        bulletContainer.Transform.forward * Time.deltaTime * bulletContainer.Settings.Speed;
+                        bulletContainer.Transform.right * Time.deltaTime * bulletContainer.Settings.Speed;
 
                     bulletContainer.Transform.localScale = bulletContainer.Settings.Prefab.localScale * bulletContainer.Settings.Size;
                 }
@@ -131,7 +131,7 @@ public class BulletPool : MonoBehaviour
 
         // initialise the bullet
         bulletsArray[idx].Transform.position = position;
-        bulletsArray[idx].Transform.forward = direction;
+        bulletsArray[idx].Transform.right = direction;
         bulletsArray[idx].PrevPos = position;
         bulletsArray[idx].Damage = bulletSettings.Damage;
         bulletsArray[idx].Time = 0;
