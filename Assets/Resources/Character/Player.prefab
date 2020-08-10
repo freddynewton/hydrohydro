@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1270907703}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WeaponPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1837683389}
   - component: {fileID: 2066992953}
   - component: {fileID: 2066992955}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4930,7 +4930,7 @@ GameObject:
   - component: {fileID: 1829693452}
   - component: {fileID: 1829693453}
   - component: {fileID: 748668657}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4966,6 +4966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
   cameraMain: {fileID: 0}
+  mousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &4626470564188726162
 MonoBehaviour:
   m_ObjectHideFlags: 0

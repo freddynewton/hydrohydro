@@ -38,11 +38,17 @@ public class Projectile : MonoBehaviour
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(other);
-
-        Destroy(gameObject);
+        Debug.Log(col.gameObject.tag);
+        switch (col.gameObject.tag)
+        {
+            case "Obstacle":
+                Destroy(gameObject);
+                break;
+            case "Enemy":
+                break;
+        }
     }
 
     private void Awake()
