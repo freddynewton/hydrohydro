@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Pool Blue Projectile
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4181862338269257132, guid: e5b7e94594e70414e956febb653e33e7, type: 3}
-  Damage: 10
+  ImpactEffect: {fileID: 735659162817431628, guid: 017e0cb9d38c3db418def9fbd810dd9a, type: 3}
+  ImpactEffectDuration: 0.4
+  Damage: 1
   Lifetime: 3
   Speed: 3
   Size: 1
+  SizeCollide: {x: 0.1, y: 0.04}
+  Angle: 0
   CollideWith:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768

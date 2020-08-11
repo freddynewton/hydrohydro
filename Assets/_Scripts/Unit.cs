@@ -28,4 +28,14 @@ public class Unit : MonoBehaviour
     {
 
     }
+
+    public virtual void DoDamage(int amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

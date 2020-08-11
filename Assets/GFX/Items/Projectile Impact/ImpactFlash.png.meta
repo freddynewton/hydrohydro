@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: b38045291924f1b46a7e77fefc03d46b
+guid: 2e28ccca7a3f937418d37091c5e787f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 215757281315727074
-    second: MuzzleFlash_Sheet_white_0
+      213: -1200658533648082994
+    second: ImpactFlash_0
   - first:
-      213: -4667336272233538488
-    second: MuzzleFlash_Sheet_white_1
+      213: 409566657921161906
+    second: ImpactFlash_1
   - first:
-      213: -6061994154955374966
-    second: MuzzleFlash_Sheet_white_2
+      213: -176106329671621429
+    second: ImpactFlash_2
+  - first:
+      213: -8787071885254203895
+    second: ImpactFlash_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -134,13 +137,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MuzzleFlash_Sheet_white_0
+      name: ImpactFlash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 11
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,41 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e6278eaa168ef200800000000000000
-      internalID: 215757281315727074
+      spriteID: ec75d5dcc67665fe0800000000000000
+      internalID: -1200658533648082994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MuzzleFlash_Sheet_white_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84c5936936a4a3fb0800000000000000
-      internalID: -4667336272233538488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MuzzleFlash_Sheet_white_2
+      name: ImpactFlash_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
-        width: 8
-        height: 11
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +172,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8ef3631f687fdba0800000000000000
-      internalID: -6061994154955374966
+      spriteID: 2ba1c3594b21fa500800000000000000
+      internalID: 409566657921161906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ImpactFlash_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4a939e9385e8df0800000000000000
+      internalID: -176106329671621429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ImpactFlash_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 906e99f1dac0e0680800000000000000
+      internalID: -8787071885254203895
       vertices: []
       indices: 
       edges: []
@@ -206,7 +230,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures:
-    - texture: {fileID: 2800000, guid: 6643017ede250be4d9b296d2c16aab08, type: 3}
+    - texture: {fileID: 2800000, guid: 0f319bf7cbe75424e8442f29bf384fca, type: 3}
       name: _Emission
   spritePackingTag: 
   pSDRemoveMatte: 0

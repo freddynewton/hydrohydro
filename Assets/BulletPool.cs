@@ -29,7 +29,9 @@ public class BulletPool : MonoBehaviour
         public Vector3 PrevPos;
         public float Time;
         public int WaitTimer = 20;
-        public float Damage;
+        public Vector2 SizeCollide;
+        public int Damage;
+        public float Angle;
         public bool Disable = false;
     }
 
@@ -116,7 +118,7 @@ public class BulletPool : MonoBehaviour
     /// <summary>
     /// Create a bullet
     /// </summary>
-    public void SpawnBullet(Bullet bulletSettings, Vector3 position, Vector3 direction)
+    public void SpawnBullet(Bullet bulletSettings, Vector3 position, Vector3 direction, float angle)
     {
         // find a bullet where the settings match and the bullet is inactive and ready to load
         var bulletsArray = _bullets.First(setting => setting.Key.BulletPF == bulletSettings.Prefab).Value;
@@ -138,6 +140,8 @@ public class BulletPool : MonoBehaviour
         bulletsArray[idx].WaitTimer = 0;
         bulletsArray[idx].Transform.gameObject.SetActive(true);
         bulletsArray[idx].Settings = bulletSettings;
+        bulletsArray[idx].Angle = angle;
+        bulletsArray[idx].SizeCollide = bulletSettings.SizeCollide;
         bulletsArray[idx].Disable = false;
     }
 
@@ -161,16 +165,33 @@ public class BulletPool : MonoBehaviour
                 if (!bulletContainer.Transform.gameObject.activeSelf || bulletContainer.Transform.localScale == Vector3.zero) continue;
 
                 // check objects in a capsule based on the bullet's position, its previous position and the radius, using the physics collision matrix
+
+                var found = Physics2D.OverlapBox(bulletContainer.Transform.position, bulletContainer.SizeCollide, bulletContainer.Angle, bulletContainer.Settings.CollideWith);
+
+                /*
                 var found = Physics.OverlapCapsule(bulletContainer.Transform.position, bulletContainer.PrevPos,
-                    bulletContainer.Settings.Size, bulletContainer.Settings.CollideWith, QueryTriggerInteraction.Ignore);
+                bulletContainer.Settings.Size, bulletContainer.Settings.CollideWith, QueryTriggerInteraction.Ignore);
+                */
 
                 // if there's no collisions or all collisions are trigger objects, skip it
-                if (found.Length <= 0) continue;
+                if (found == null) continue;
 
-                foreach (var obj in found)
+                // Hit Effect
+                Debug.Log(found.gameObject.layer == 9);
+
+                switch (found.gameObject.layer)
                 {
-                    // hit the object!!
+                    case 9:
+                        found.gameObject.GetComponent<Unit>().DoDamage(bulletContainer.Damage);
+                        break;
+                    case 10:
+                        found.gameObject.GetComponent<Unit>().DoDamage(bulletContainer.Damage);
+                        break;
                 }
+
+                GameObject impact = Instantiate(bulletContainer.Settings.ImpactEffect, bulletContainer.Transform.position, Quaternion.AngleAxis(bulletContainer.Angle, Vector3.forward), null) as GameObject;
+                Destroy(impact, bulletContainer.Settings.ImpactEffectDuration);
+
 
                 bulletContainer.Disable = true;
                 bulletContainer.Transform.gameObject.SetActive(false);

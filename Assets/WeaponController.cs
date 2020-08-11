@@ -20,7 +20,12 @@ public class WeaponController : MonoBehaviour
     private void weaponInputs()
     {
         if (Inventory.Instance.currentWeapon != null && Input.GetKey(KeyCode.Mouse0))
-            Inventory.Instance.curWeaponScript.shoot();
+        {
+            Vector3 dir = Playercontroller.Instance.mousePos - Inventory.Instance.currentWeapon.transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Inventory.Instance.curWeaponScript.shoot(angle);
+        }
+
     }
 
     private void weaponLookAtMouse()

@@ -46,13 +46,13 @@ public class Weapon : MonoBehaviour
             timer -= Time.deltaTime;
     }
 
-    public virtual void shoot()
+    public virtual void shoot(float Angle)
     {
         if (timer <= 0)
         {
             animator.SetTrigger("shoot");
             muzzleAnimator.SetTrigger("shoot");
-            bulletPool.SpawnBullet(bullet, Inventory.Instance.currentWeapon.transform.position, Inventory.Instance.currentWeapon.transform.right);
+            bulletPool.SpawnBullet(bullet, Inventory.Instance.currentWeapon.transform.position, Inventory.Instance.currentWeapon.transform.right, Angle);
 
             Playercontroller.Instance.rb.AddForce((Playercontroller.Instance.gameObject.transform.position - mousePos) * shootKnockback);
 

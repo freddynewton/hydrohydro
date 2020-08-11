@@ -8,13 +8,21 @@ public class Bullet : ScriptableObject
     [Header("Properties")] 
     public Transform Prefab;
 
-    public float Damage;
+    public GameObject ImpactEffect;
+
+    public float ImpactEffectDuration;
+
+    public int Damage;
     
     public float Lifetime;
     
     public float Speed;
 
     public float Size;
+
+    public Vector2 SizeCollide;
+
+    [HideInInspector] public float Angle;
 
     public LayerMask CollideWith;
 }
