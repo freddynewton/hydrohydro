@@ -7,4 +7,7 @@ public class Stat : ScriptableObject
 {
     public float moveSpeed;
     public int health;
+
+    [Header("Enemy Stats")]
+    public float maxRange = 20f;
 }
