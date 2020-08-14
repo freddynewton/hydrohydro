@@ -5,7 +5,8 @@ using UnityEngine;
 public enum InputAiEnum
 {
     Health,
-    RangeToTargetNormalized
+    RangeToTargetNormalized,
+    TargetHealth
 }
 
 public class UtilityAIHandler : MonoBehaviour
@@ -14,11 +15,12 @@ public class UtilityAIHandler : MonoBehaviour
     public SettingsAI settings;
 
     [HideInInspector] public GameObject target;
+    [HideInInspector] public Unit targetUnit;
     [HideInInspector] public Rigidbody2D rb;
 
     private Unit unit;
     private List<float> utilitiesArr;
-    private ActionAI currentAction;
+    private int currentAction;
     
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,7 @@ public class UtilityAIHandler : MonoBehaviour
 
     private void calcUtility()
     {
-        foreach (var action in settings.actionList)
+        foreach (var action in settings.actionSettingList)
         {
            float ut = 1;
 
@@ -38,13 +40,33 @@ public class UtilityAIHandler : MonoBehaviour
                 ut *= setting.curve.Evaluate(getEnumInputValue(setting.input));
             }
 
-            utilitiesArr[settings.actionList.IndexOf(action)] = ut;
+            utilitiesArr[settings.actionSettingList.IndexOf(action)] = ut;
         }
+
+        chooseHighestScoreUtility();
+    }
+
+    private void getTarget()
+    {
+        target = Playercontroller.Instance.gameObject;
+        targetUnit = Playercontroller.Instance.unit;
     }
 
     private void chooseHighestScoreUtility()
     {
         int index = 0;
+        float highestScore = 0;
+
+        foreach (float ut in utilitiesArr)
+        {
+            if (ut > highestScore)
+            {
+                highestScore = ut;
+                index = utilitiesArr.IndexOf(ut);
+            }
+        }
+
+        currentAction = index;
     }
 
     private float getEnumInputValue(InputAiEnum input)
@@ -62,6 +84,9 @@ public class UtilityAIHandler : MonoBehaviour
                     } 
                     return 0;
                 }
+            case InputAiEnum.TargetHealth:
+                return targetUnit.currentHealth / targetUnit.stats.health;
+            
         }
 
         return 0;
@@ -70,6 +95,14 @@ public class UtilityAIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (ActionAI action in settings.actionSettingList[currentAction].actionList)
+        {
+            action.use(this);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        calcUtility();
     }
 }

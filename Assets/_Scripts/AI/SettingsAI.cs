@@ -7,12 +7,12 @@ using System;
 public class SettingsAI : ScriptableObject
 {
 
-    public List<actionSetting> actionList;
+    public List<actionSetting> actionSettingList;
     
     [Serializable]
     public struct actionSetting
     {
-        public ActionAI action;
+        public List<ActionAI> actionList;
         public List<setting> settingList;
     }
 
