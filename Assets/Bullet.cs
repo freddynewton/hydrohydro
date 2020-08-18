@@ -12,7 +12,7 @@ public class Bullet : ScriptableObject
 
     public float ImpactEffectDuration;
 
-    public int Damage;
+    [HideInInspector] public int Damage;
     
     public float Lifetime;
     
@@ -23,6 +23,8 @@ public class Bullet : ScriptableObject
     public Vector2 SizeCollide;
 
     [HideInInspector] public float Angle;
+
+    [HideInInspector] public float hitShootKnockback;
 
     public LayerMask CollideWith;
 }

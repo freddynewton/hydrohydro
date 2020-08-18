@@ -4865,6 +4865,8 @@ MonoBehaviour:
   muzzleFlash: {fileID: 5282827882873315157}
   attackRate: 0.3
   shootKnockback: 25
+  hitShootKnockback: 100
+  damage: 1
   screenShake: 0
   screenshakeAmount: 0
   projectileForce: 4

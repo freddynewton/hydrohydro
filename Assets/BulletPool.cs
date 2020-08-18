@@ -31,6 +31,7 @@ public class BulletPool : MonoBehaviour
         public int WaitTimer = 20;
         public Vector2 SizeCollide;
         public int Damage;
+        public float hitShootKnockback;
         public float Angle;
         public bool Disable = false;
     }
@@ -137,6 +138,7 @@ public class BulletPool : MonoBehaviour
         bulletsArray[idx].PrevPos = position;
         bulletsArray[idx].Damage = bulletSettings.Damage;
         bulletsArray[idx].Time = 0;
+        bulletsArray[idx].hitShootKnockback = bulletSettings.hitShootKnockback;
         bulletsArray[idx].WaitTimer = 0;
         bulletsArray[idx].Transform.gameObject.SetActive(true);
         bulletsArray[idx].Settings = bulletSettings;
@@ -177,15 +179,16 @@ public class BulletPool : MonoBehaviour
                 if (found == null) continue;
 
                 // Hit Effect
-                Debug.Log(found.gameObject.layer == 9);
-
                 switch (found.gameObject.layer)
                 {
+                    // Enemies
                     case 9:
-                        found.gameObject.GetComponent<Unit>().DoDamage(bulletContainer.Damage);
+                        found.gameObject.GetComponent<Unit>().DoDamage(bulletContainer.Damage, bulletContainer.hitShootKnockback, bulletContainer.Transform.position);
                         break;
+
+                    // Player
                     case 10:
-                        found.gameObject.GetComponent<Unit>().DoDamage(bulletContainer.Damage);
+                        found.gameObject.GetComponent<Unit>().DoDamage(bulletContainer.Damage, bulletContainer.hitShootKnockback, bulletContainer.Transform.position);
                         break;
                 }
 

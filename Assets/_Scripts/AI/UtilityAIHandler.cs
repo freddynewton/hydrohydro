@@ -21,7 +21,7 @@ public class UtilityAIHandler : MonoBehaviour
     private Unit unit;
     private List<float> utilitiesArr;
     private int currentAction;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +29,18 @@ public class UtilityAIHandler : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Awake()
+    {
+        getTarget();
+    }
+
     private void calcUtility()
     {
         foreach (var action in settings.actionSettingList)
         {
-           float ut = 1;
+            float ut = 1;
 
-           foreach (var setting in action.settingList)
+            foreach (var setting in action.settingList)
             {
                 ut *= setting.curve.Evaluate(getEnumInputValue(setting.input));
             }
@@ -81,12 +86,12 @@ public class UtilityAIHandler : MonoBehaviour
                     {
                         float tmp = Vector2.Distance(gameObject.transform.position, target.transform.position) / unit.stats.maxRange;
                         return tmp > 1 ? 1 : tmp;
-                    } 
+                    }
                     return 0;
                 }
             case InputAiEnum.TargetHealth:
                 return targetUnit.currentHealth / targetUnit.stats.health;
-            
+
         }
 
         return 0;
@@ -97,7 +102,10 @@ public class UtilityAIHandler : MonoBehaviour
     {
         foreach (ActionAI action in settings.actionSettingList[currentAction].actionList)
         {
-            action.use(this);
+            if (action != null)
+            {
+                action.use(this);
+            }
         }
     }
 

@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class PlayerUnit : Unit
 {
-    public GameObject weaponPos;
 
-    // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        
+        base.Start();
+        Physics2D.IgnoreLayerCollision(10, 9);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-
+        base.Update();
     }
 }

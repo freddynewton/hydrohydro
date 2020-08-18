@@ -30,7 +30,7 @@ public class WeaponController : MonoBehaviour
 
     private void weaponLookAtMouse()
     {
-
+        
         Vector3 dir = Playercontroller.Instance.mousePos - Inventory.Instance.currentWeapon.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);

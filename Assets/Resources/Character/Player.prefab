@@ -102,7 +102,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -528504953
+  m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: -7094474727115146075, guid: b86014daa4f7ed940861257ee4e7b41b, type: 3}
@@ -5012,7 +5012,6 @@ GameObject:
   - component: {fileID: 1829693452}
   - component: {fileID: 1829693453}
   - component: {fileID: 748668657}
-  - component: {fileID: 18227488}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -5067,10 +5066,10 @@ MonoBehaviour:
   GFX: {fileID: 1485739286}
   stats: {fileID: 11400000, guid: 6d33a0f7d958d0d42843ed2129594640, type: 2}
   animator: {fileID: 1837683389}
+  weaponPos: {fileID: 1270907702}
   currentHealth: 0
   isMoving: 0
   canInteract: 0
-  weaponPos: {fileID: 1270907702}
 --- !u!114 &1425815094218712233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5132,29 +5131,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed459b2e4272f984693bc6810f5fa75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &18227488
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9042582841439643655}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0040509105, y: -0.054686993}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.08855188, y: 0.04804319}
-  m_EdgeRadius: 0

@@ -9,5 +9,6 @@ public class Stat : ScriptableObject
     public int health;
 
     [Header("Enemy Stats")]
-    public float maxRange = 20f;
+    public float maxRange = 3f;
+    
 }

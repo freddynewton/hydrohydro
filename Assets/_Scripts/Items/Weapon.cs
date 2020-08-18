@@ -13,7 +13,9 @@ public class Weapon : MonoBehaviour
 
     [Header("Weapon Stats")]
     public float attackRate = 1;
-    public float shootKnockback = 0.2f;
+    public float shootKnockback = 25f;
+    public float hitShootKnockback = 40f;
+    public int damage = 1;
 
     [Header("Screenshake")]
     public bool screenShake;
@@ -28,6 +30,12 @@ public class Weapon : MonoBehaviour
     private Vector3 mousePos;
     private Camera cameraMain;
     private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        bullet.Damage = damage;
+        bullet.hitShootKnockback = hitShootKnockback;
+    }
 
     private void Start()
     {
