@@ -13,9 +13,13 @@ public class Weapon : MonoBehaviour
 
     [Header("Weapon Stats")]
     public float attackRate = 1;
+    public int damage = 1;
+    [Range(0, 1)]public float critChance = 0.05f;
+    public int critMultiplier = 2;
+
+    [Header("Weapon Bonus Stats")]
     public float shootKnockback = 25f;
     public float hitShootKnockback = 40f;
-    public int damage = 1;
 
     [Header("Screenshake")]
     public bool screenShake;
@@ -35,6 +39,8 @@ public class Weapon : MonoBehaviour
     {
         bullet.Damage = damage;
         bullet.hitShootKnockback = hitShootKnockback;
+        bullet.critChance = critChance;
+        bullet.critMultiplier = critMultiplier;
     }
 
     private void Start()

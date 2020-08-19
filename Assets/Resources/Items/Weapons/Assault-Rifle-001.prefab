@@ -4864,9 +4864,11 @@ MonoBehaviour:
   bullet: {fileID: 11400000, guid: cfb9b1f8eef47cc4e96bc0f6a59107aa, type: 2}
   muzzleFlash: {fileID: 5282827882873315157}
   attackRate: 0.3
+  damage: 1
+  critChance: 0.1
+  critMultiplier: 2
   shootKnockback: 25
   hitShootKnockback: 100
-  damage: 1
   screenShake: 0
   screenshakeAmount: 0
   projectileForce: 4

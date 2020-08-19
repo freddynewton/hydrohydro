@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
+
 
 public class Unit : MonoBehaviour
 {
@@ -38,18 +41,24 @@ public class Unit : MonoBehaviour
 
     }
 
-    public virtual void DoDamage(int amount, float hitShootKnockback, Vector3 bulletPos)
+    public virtual void DoDamage(GameObject bulletObj, Bullet bulletSettings)
     {
-        currentHealth -= amount;
+        bool isCrit = UnityEngine.Random.Range(0.0f, 1.0f) <= bulletSettings.critChance;
+
+        int damage = !isCrit ? bulletSettings.Damage : bulletSettings.Damage * (int)bulletSettings.critMultiplier;
+        currentHealth -= damage;
 
         StartCoroutine(flashWhite(0.1f));
-        
-        knockback(bulletPos, hitShootKnockback);
 
+        knockback(bulletObj.transform.position, bulletSettings.hitShootKnockback);
+
+        DamageNumberPool.Instance.Spawn(gameObject.transform.position + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), 0.1f, 0), isCrit, damage);
         if (currentHealth <= 0)
         {
+            //TODO: Death anim and deactivate all scripts 
             Destroy(gameObject);
         }
+
     }
 
     private void knockback(Vector3 otherPos, float kb)
