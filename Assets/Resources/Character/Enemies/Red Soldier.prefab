@@ -125,7 +125,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7191441398184318000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b24a7677f0dab5640b834b700c306c76, type: 3}
   m_Name: 
@@ -150,6 +150,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 6c961627e3661114e892e06612172c0f, type: 2}
   animator: {fileID: 7191441398416057308}
   weaponPos: {fileID: 0}
+  rb: {fileID: 0}
   currentHealth: 0
   isMoving: 0
   canInteract: 0
@@ -184,7 +185,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.01, y: 0}

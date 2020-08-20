@@ -18,7 +18,7 @@ public class DamageNumberPool : ObjectPool<DamageNumber>
         damageNumber.DamageAmount = amount;
         damageNumber.setDamageText(crit);
         damageNumber.gameObject.SetActive(true);
-        damageNumber.animateText();
+        damageNumber.animateText(crit);
     }
 
     private void Awake()

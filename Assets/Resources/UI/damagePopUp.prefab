@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253c030c6bdae54449afb591b6063673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lifetime: 2
+  Lifetime: 1.7
   critColor: {r: 1, g: 0.33333334, b: 0, a: 1}
   DamageAmount: 0
   tmp: {fileID: 0}

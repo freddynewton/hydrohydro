@@ -51,9 +51,21 @@ public class DamageNumber : MonoBehaviour
         }
     }
 
-    public void animateText()
-    {
+    public void animateText(bool crit)
+    {   
         gameObject.transform.localScale = Vector2.zero;
-        LeanTween.scale(gameObject, Vector3.one, Lifetime).setEaseOutElastic();
+
+        if (crit)
+            LeanTween.scale(gameObject, Vector3.one * 1.4f, Lifetime / 2).setEaseOutElastic();
+        else
+            LeanTween.scale(gameObject, Vector3.one, Lifetime / 2).setEaseOutElastic();
+
+        StartCoroutine(AnimText());
+    }
+
+    private IEnumerator AnimText()
+    {
+        yield return new WaitForSecondsRealtime(Lifetime / 2);
+        LeanTween.scale(gameObject, Vector2.zero, Lifetime / 2).setEaseInElastic();
     }
 }

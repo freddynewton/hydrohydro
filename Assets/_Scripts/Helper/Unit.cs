@@ -52,7 +52,7 @@ public class Unit : MonoBehaviour
 
         knockback(bulletObj.transform.position, bulletSettings.hitShootKnockback);
 
-        DamageNumberPool.Instance.Spawn(gameObject.transform.position + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), 0.1f, 0), isCrit, damage);
+        DamageNumberPool.Instance.Spawn(gameObject.transform.position + new Vector3(UnityEngine.Random.Range(-0.16f, 0.1f), UnityEngine.Random.Range(0.1f, 0.16f), 0), isCrit, damage);
         if (currentHealth <= 0)
         {
             //TODO: Death anim and deactivate all scripts 

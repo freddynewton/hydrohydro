@@ -4865,7 +4865,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 5282827882873315157}
   attackRate: 0.3
   damage: 1
-  critChance: 0.1
+  critChance: 0.25
   critMultiplier: 2
   shootKnockback: 25
   hitShootKnockback: 100

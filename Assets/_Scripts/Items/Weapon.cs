@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
     [Header("Weapon Stats")]
     public float attackRate = 1;
     public int damage = 1;
-    [Range(0, 1)]public float critChance = 0.05f;
+    [Range(0, 1)] public float critChance = 0.05f;
     public int critMultiplier = 2;
 
     [Header("Weapon Bonus Stats")]
@@ -70,7 +70,24 @@ public class Weapon : MonoBehaviour
 
             Playercontroller.Instance.rb.AddForce((Playercontroller.Instance.gameObject.transform.position - mousePos) * shootKnockback);
 
+            spawnBulletshell();
+
             timer = attackRate;
         }
+    }
+
+    public void spawnBulletshell()
+    {
+        GameObject shell = Instantiate(Resources.Load("Items/bulletshell"), gameObject.transform.position, Quaternion.identity, null) as GameObject;
+
+        float side = mousePos.x > Playercontroller.Instance.transform.position.x ? -1 : 1;
+
+        Vector2 pos = new Vector2((gameObject.transform.position.x + (Random.Range(0.1f, 0.4f) * side)),
+            (gameObject.transform.position.y + Random.Range(-0.2f, 0.2f)));
+
+        LeanTween.moveY(shell, pos.y, 1.4f).setEaseOutBounce();
+        LeanTween.moveX(shell, pos.x, 1.4f).setEaseInSine();
+        LeanTween.rotateLocal(shell, new Vector3(0, 0, Random.Range(-360, 360)), 1.4f).setEaseInOutElastic();
+
     }
 }
