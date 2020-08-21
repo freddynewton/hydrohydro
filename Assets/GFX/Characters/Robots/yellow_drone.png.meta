@@ -11,6 +11,12 @@ TextureImporter:
   - first:
       213: 9082360029346838908
     second: yellow_drone_2
+  - first:
+      213: 1838253939250258477
+    second: yellow_drone_3
+  - first:
+      213: 115416689061702945
+    second: yellow_drone_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -156,6 +162,48 @@ TextureImporter:
       bones: []
       spriteID: c79bc6783560b0e70800000000000000
       internalID: 9082360029346838908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_drone_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2269ffd73ac28910800000000000000
+      internalID: 1838253939250258477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_drone_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12daca00eda0a9100800000000000000
+      internalID: 115416689061702945
       vertices: []
       indices: 
       edges: []

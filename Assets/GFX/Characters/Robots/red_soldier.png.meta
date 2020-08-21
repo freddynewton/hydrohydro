@@ -35,6 +35,12 @@ TextureImporter:
   - first:
       213: -3495330011939371971
     second: red_soldier_10
+  - first:
+      213: 847873557212135271
+    second: red_soldier_11
+  - first:
+      213: 5296807380218992364
+    second: red_soldier_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -348,6 +354,48 @@ TextureImporter:
       bones: []
       spriteID: d3487998fd71e7fc0800000000000000
       internalID: -3495330011939371971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red_soldier_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f7310128044cb00800000000000000
+      internalID: 847873557212135271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red_soldier_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6de95af3a028940800000000000000
+      internalID: 5296807380218992364
       vertices: []
       indices: 
       edges: []

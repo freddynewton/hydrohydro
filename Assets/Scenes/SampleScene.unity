@@ -70896,10 +70896,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yellow Drone
       objectReference: {fileID: 0}
-    - target: {fileID: 8877435847124678512, guid: f95a8068275db004893f6baa6ffd84af, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8877435847124678513, guid: f95a8068275db004893f6baa6ffd84af, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.366

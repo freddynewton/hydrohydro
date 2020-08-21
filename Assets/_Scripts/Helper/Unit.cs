@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
-
+using UnityEditor.Android;
 
 public class Unit : MonoBehaviour
 {
@@ -53,12 +53,35 @@ public class Unit : MonoBehaviour
         knockback(bulletObj.transform.position, bulletSettings.hitShootKnockback);
 
         DamageNumberPool.Instance.Spawn(gameObject.transform.position + new Vector3(UnityEngine.Random.Range(-0.16f, 0.1f), UnityEngine.Random.Range(0.1f, 0.16f), 0), isCrit, damage);
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
         {
-            //TODO: Death anim and deactivate all scripts 
-            Destroy(gameObject);
+            // Hit anim
+            animator.SetTrigger("hit");
+        }
+        else
+        {
+            // Death Anim
+            death(bulletObj);
+        }
+    }
+
+    private void death(GameObject bullet)
+    {
+        animator.SetTrigger("dead");
+
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        if (gameObject.layer == 9)
+        {
+            gameObject.GetComponent<UtilityAIHandler>().enabled = false;
         }
 
+        float side = bullet.transform.position.x > gameObject.transform.position.x ? -1 : 1;
+
+        Vector2 pos = new Vector2(gameObject.transform.position.x + (UnityEngine.Random.Range(0.1f, 0.2f) * side),
+            (gameObject.transform.position.y + UnityEngine.Random.Range(-0.2f, 0.2f)));
+
+        LeanTween.moveY(gameObject, pos.y, 1.4f).setEaseOutBounce();
+        LeanTween.moveX(gameObject, pos.x, 1.4f).setEaseInSine();
     }
 
     private void knockback(Vector3 otherPos, float kb)

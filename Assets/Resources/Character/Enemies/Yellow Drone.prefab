@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4550219861126262850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.08, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 8877435847124678513}
@@ -153,7 +153,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 99
   m_Sprite: {fileID: -2528706338231486796, guid: 81a1737b4d8be6549a34cde636a64049, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,7 +175,7 @@ Animator:
   m_GameObject: {fileID: 8877435846597645165}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 98efea75f6cb3ed40985c07a546ff838, type: 2}
+  m_Controller: {fileID: 22100000, guid: 05246b070b0be5246b229932d6bb1093, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -289,6 +289,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: f9d94f77c8e85ca45bbad64f2f4100dd, type: 2}
   animator: {fileID: 8877435846597645075}
   weaponPos: {fileID: 8877435846597645165}
+  rb: {fileID: 0}
   currentHealth: 0
   isMoving: 0
   canInteract: 0

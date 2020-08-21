@@ -69,7 +69,7 @@ public class Weapon : MonoBehaviour
             bulletPool.SpawnBullet(bullet, Inventory.Instance.currentWeapon.transform.position, Inventory.Instance.currentWeapon.transform.right, Angle);
 
             Playercontroller.Instance.rb.AddForce((Playercontroller.Instance.gameObject.transform.position - mousePos) * shootKnockback);
-
+  
             spawnBulletshell();
 
             timer = attackRate;
