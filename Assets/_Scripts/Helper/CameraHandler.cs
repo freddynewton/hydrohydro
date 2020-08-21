@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraHandler : MonoBehaviour
 {
     public static CameraHandler Instance { get; private set; }
+    private GameObject parentCamObj;
 
     [HideInInspector] public Transform target;
     public float smoothSpeed = 30;
@@ -13,26 +14,29 @@ public class CameraHandler : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        parentCamObj = gameObject.transform.parent.gameObject;
     }
 
-    public IEnumerator Shake(float duration, float magnitude)
+
+    public void CameraShake(float duration, float intensitivität, float dropOffTime)
     {
-        Vector3 originalPos = transform.localPosition;
-        float elapsed = 0.0f;
+        shake(duration, intensitivität, dropOffTime);
+    }
 
-        while (elapsed < duration)
-        {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+    public void shake(float duration, float intensitivität, float dropOffTime)
+    {
+        LTDescr shakeTween = LeanTween.rotateAroundLocal(gameObject, Vector3.right, intensitivität, duration)
+            .setEase(LeanTweenType.easeShake) // this is a special ease that is good for shaking
+            .setLoopClamp()
+            .setRepeat(-1);
 
-            transform.localPosition = new Vector3(x, y, originalPos.z);
-
-            elapsed += Time.deltaTime;
-
-            yield return null;
-        }
-
-        transform.localPosition = originalPos;
+        // Slow the camera shake down to zero
+        LeanTween.value(gameObject, intensitivität, 0f, dropOffTime).setOnUpdate(
+            (float val) =>
+            {
+                shakeTween.setTo(Vector3.right * val);
+            }
+        ).setEase(LeanTweenType.easeOutQuad);
     }
 
     private void FixedUpdate()

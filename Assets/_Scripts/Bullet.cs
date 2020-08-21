@@ -24,6 +24,8 @@ public class Bullet : ScriptableObject
 
     public float Size;
 
+    [HideInInspector] public screenShakeSettings screenShakeSetting;
+
     public Vector2 SizeCollide;
 
     [HideInInspector] public float Angle;

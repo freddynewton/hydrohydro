@@ -1,12 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public struct screenShakeSettings
+{
+    public bool screenShakeOnHitCharacter;
+    public bool screenShakeOnShoot;
+    public float duration;
+    public float intensitivität;
+    public float dropOffTime;
+}
 
 public class Weapon : MonoBehaviour
 {
     [Header("Objects")]
     public Bullet bullet;
     public GameObject muzzleFlash;
+    public GameObject bulletShell;
     private Animator muzzleAnimator;
     private Animator animator;
     private BulletPool bulletPool;
@@ -22,8 +34,7 @@ public class Weapon : MonoBehaviour
     public float hitShootKnockback = 40f;
 
     [Header("Screenshake")]
-    public bool screenShake;
-    public float screenshakeAmount;
+    public screenShakeSettings screenShakeSetting;
 
     [Header("Projectile Settings")]
     public float projectileForce = 20f;
@@ -41,6 +52,7 @@ public class Weapon : MonoBehaviour
         bullet.hitShootKnockback = hitShootKnockback;
         bullet.critChance = critChance;
         bullet.critMultiplier = critMultiplier;
+        bullet.screenShakeSetting = screenShakeSetting;
     }
 
     private void Start()
@@ -73,21 +85,24 @@ public class Weapon : MonoBehaviour
             spawnBulletshell();
 
             timer = attackRate;
+
+            if (screenShakeSetting.screenShakeOnShoot)
+                CameraHandler.Instance.CameraShake(screenShakeSetting.duration, screenShakeSetting.intensitivität, screenShakeSetting.dropOffTime);
         }
     }
 
     public void spawnBulletshell()
     {
-        GameObject shell = Instantiate(Resources.Load("Items/bulletshell"), gameObject.transform.position, Quaternion.identity, null) as GameObject;
+        GameObject shell = Instantiate(bulletShell, gameObject.transform.position, Quaternion.identity, null) as GameObject;
 
         float side = mousePos.x > Playercontroller.Instance.transform.position.x ? -1 : 1;
 
-        Vector2 pos = new Vector2((gameObject.transform.position.x + (Random.Range(0.1f, 0.4f) * side)),
-            (gameObject.transform.position.y + Random.Range(-0.2f, 0.2f)));
+        Vector2 pos = new Vector2((gameObject.transform.position.x + (UnityEngine.Random.Range(0.1f, 0.4f) * side)),
+            (gameObject.transform.position.y + UnityEngine.Random.Range(-0.2f, 0.2f)));
 
         LeanTween.moveY(shell, pos.y, 1.4f).setEaseOutBounce();
         LeanTween.moveX(shell, pos.x, 1.4f).setEaseInSine();
-        LeanTween.rotateLocal(shell, new Vector3(0, 0, Random.Range(-360, 360)), 1.4f).setEaseInOutElastic();
+        LeanTween.rotateLocal(shell, new Vector3(0, 0, UnityEngine.Random.Range(-360, 360)), 1.4f).setEaseInOutElastic();
 
     }
 }

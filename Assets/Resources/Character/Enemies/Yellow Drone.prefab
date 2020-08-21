@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 196538531}
   - component: {fileID: 196538532}
   - component: {fileID: 1772405952109750847}
-  - component: {fileID: 5693074384289743066}
+  - component: {fileID: 1184958543}
   m_Layer: 9
   m_Name: Yellow Drone
   m_TagString: Enemy
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8877435847124678512}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b24a7677f0dab5640b834b700c306c76, type: 3}
   m_Name: 
@@ -273,7 +273,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetUnit: {fileID: 0}
   rb: {fileID: 0}
---- !u!114 &5693074384289743066
+--- !u!114 &1184958543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8877435847124678512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672386e94579ab94d85aa4abdc3bc2d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 428dd319fe9a677468c57636a5099202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GFX: {fileID: 8877435846597645165}
@@ -293,3 +293,4 @@ MonoBehaviour:
   currentHealth: 0
   isMoving: 0
   canInteract: 0
+  shadow: {fileID: 4550219861126262850}

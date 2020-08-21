@@ -4863,14 +4863,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 11400000, guid: cfb9b1f8eef47cc4e96bc0f6a59107aa, type: 2}
   muzzleFlash: {fileID: 5282827882873315157}
+  bulletShell: {fileID: 4035784772888296265, guid: 0fb4123f15da9f5498aa319edac7a674, type: 3}
   attackRate: 0.3
   damage: 1
   critChance: 0.25
   critMultiplier: 2
   shootKnockback: 25
   hitShootKnockback: 100
-  screenShake: 0
-  screenshakeAmount: 0
+  screenShakeSetting:
+    screenShakeOnHitCharacter: 1
+    screenShakeOnShoot: 0
+    duration: 0.35
+    "intensitivit\xE4t": 1.1
+    dropOffTime: 0.7
   projectileForce: 4
   accuracy: 2
 --- !u!114 &7576465654730448610

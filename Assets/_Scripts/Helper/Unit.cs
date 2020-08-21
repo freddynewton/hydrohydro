@@ -63,9 +63,12 @@ public class Unit : MonoBehaviour
             // Death Anim
             death(bulletObj);
         }
+
+        if (bulletSettings.screenShakeSetting.screenShakeOnHitCharacter)
+            CameraHandler.Instance.CameraShake(bulletSettings.screenShakeSetting.duration, bulletSettings.screenShakeSetting.intensitivität, bulletSettings.screenShakeSetting.dropOffTime);
     }
 
-    private void death(GameObject bullet)
+    public virtual void death(GameObject bullet)
     {
         animator.SetTrigger("dead");
 
