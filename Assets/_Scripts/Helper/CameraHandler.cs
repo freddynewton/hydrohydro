@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraHandler : MonoBehaviour
 {
     public static CameraHandler Instance { get; private set; }
-    private GameObject parentCamObj;
+    private Camera mainCam;
 
     [HideInInspector] public Transform target;
     public float smoothSpeed = 30;
@@ -14,9 +14,15 @@ public class CameraHandler : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        parentCamObj = gameObject.transform.parent.gameObject;
+        mainCam = Camera.main;
+        mainCam.transparencySortMode = TransparencySortMode.CustomAxis;
+        mainCam.transparencySortAxis = mainCam.transform.up;
     }
 
+    private void LateUpdate()
+    {
+        mainCam.transparencySortAxis = mainCam.transform.up;
+    }
 
     public void CameraShake(float duration, float intensitivität, float dropOffTime)
     {
