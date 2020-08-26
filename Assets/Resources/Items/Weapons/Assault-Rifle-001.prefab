@@ -4822,7 +4822,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2627060362446298077}
   - component: {fileID: 103161058029090976}
-  - component: {fileID: 7576465654730448610}
   - component: {fileID: 2627060362446298066}
   - component: {fileID: -2553928465248819131}
   - component: {fileID: 3262491394362723646}
@@ -4873,27 +4872,11 @@ MonoBehaviour:
   screenShakeSetting:
     screenShakeOnHitCharacter: 1
     screenShakeOnShoot: 0
-    duration: 0.35
-    "intensitivit\xE4t": 1.1
-    dropOffTime: 0.7
+    duration: 0.25
+    "intensitivit\xE4t": 0.9
+    dropOffTime: 0.5
   projectileForce: 4
   accuracy: 2
---- !u!114 &7576465654730448610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2627060362446298067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a3771673f515a345abe99933ee58f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  autoInit: 1
-  settings:
-  - NumBullets: 30
-    BulletPF: {fileID: 4181862338269257132, guid: e5b7e94594e70414e956febb653e33e7, type: 3}
 --- !u!212 &2627060362446298066
 SpriteRenderer:
   m_ObjectHideFlags: 0

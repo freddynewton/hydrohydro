@@ -59,11 +59,13 @@ public class BulletPool : MonoBehaviour
         // spawn the bullets
         foreach (var setting in settings)
         {
+            Debug.Log(setting.BulletPF);
+
             _bullets.Add(setting, new List<BulletContainer>());
 
             for (int i = 0; i < setting.NumBullets; ++i)
             {
-                var t = Instantiate(setting.BulletPF, Inventory.Instance.transform);
+                var t = Instantiate(setting.BulletPF, gameObject.transform);
                 t.gameObject.SetActive(false);
                 _bullets[setting].Add(new BulletContainer { Transform = t, Time = 0 });
             }
@@ -130,7 +132,6 @@ public class BulletPool : MonoBehaviour
         // if there isn't a bullet, exit out and log a warning so we know to increase the pool
         if (idx == -1)
         {
-            Debug.LogWarning($"No bullets left on {gameObject.name}");
             return;
         }
 

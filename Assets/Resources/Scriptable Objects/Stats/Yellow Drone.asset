@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e290a709ecfd23489a757948cff2b23, type: 3}
   m_Name: Yellow Drone
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0.8
   health: 3
   maxRange: 3

@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Assault-Rifle-Smol
+  m_Controller: {fileID: 9100000, guid: 05efd5cf951e4af4c9a7b0cd8dd4b0b7, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 83d7837160cafaf4584c965b1113a458, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e17675bb49b2d534086cb0e9d25fcc1a, type: 2}

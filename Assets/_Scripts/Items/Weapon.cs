@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
     {
         cameraMain = Camera.main;
         rb = GetComponent<Rigidbody2D>();
-        bulletPool = GetComponent<BulletPool>();
+        bulletPool = Inventory.Instance.gameObject.GetComponent<BulletPool>();
         animator = GetComponent<Animator>();
         muzzleAnimator = muzzleFlash.GetComponent<Animator>();
     }
@@ -88,6 +88,22 @@ public class Weapon : MonoBehaviour
 
             if (screenShakeSetting.screenShakeOnShoot)
                 CameraHandler.Instance.CameraShake(screenShakeSetting.duration, screenShakeSetting.intensitivität, screenShakeSetting.dropOffTime);
+        }
+    }
+
+    public virtual void shootEnemy(EnemyUnit unit)
+    {
+        if (timer <= 0)
+        {
+            animator.SetTrigger("shoot");
+            muzzleAnimator.SetTrigger("shoot");
+            bulletPool.SpawnBullet(bullet, gameObject.transform.position, gameObject.transform.right, unit.targetAngle);
+
+            unit.rb.AddForce((unit.gameObject.transform.position - unit.targetPos) * shootKnockback);
+
+            spawnBulletshell();
+
+            timer = attackRate;
         }
     }
 

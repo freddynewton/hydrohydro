@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public enum InputAiEnum
 {
@@ -17,16 +18,19 @@ public class UtilityAIHandler : MonoBehaviour
     [HideInInspector] public GameObject target;
     [HideInInspector] public Unit targetUnit;
     [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public EnemyUnit unit;
+    [HideInInspector] public AIPath aiPath;
 
-    private Unit unit;
-    private List<float> utilitiesArr;
+    private List<float> utilitiesArr = new List<float>();
     private int currentAction;
 
     // Start is called before the first frame update
     void Start()
     {
-        unit = GetComponent<Unit>();
+        unit = GetComponent<EnemyUnit>();
         rb = GetComponent<Rigidbody2D>();
+        aiPath = GetComponent<AIPath>();
+        aiPathSetter();
     }
 
     private void Awake()
@@ -34,10 +38,20 @@ public class UtilityAIHandler : MonoBehaviour
         getTarget();
     }
 
+    private void aiPathSetter()
+    {
+        aiPath.gravity = Vector3.zero;
+        aiPath.maxSpeed = unit.stats.moveSpeed;
+    }
+
     private void calcUtility()
     {
+        utilitiesArr.Clear();
+
         foreach (var action in settings.actionSettingList)
         {
+            utilitiesArr.Add(0);
+
             float ut = 1;
 
             foreach (var setting in action.settingList)
