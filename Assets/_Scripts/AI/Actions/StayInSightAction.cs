@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
-[CreateAssetMenu(menuName = "AI/Actions/AttackAction")]
-public class AttackAction : ActionAI
+[CreateAssetMenu(menuName = "AI/Actions/StayInSightAction")]
+public class StayInSightAction : ActionAI
 {
     public override void use(UtilityAIHandler controller)
     {
@@ -13,9 +14,9 @@ public class AttackAction : ActionAI
 
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject == controller.target.gameObject)
+            if (hit.collider.gameObject != controller.target.gameObject)
             {
-                controller.unit.weaponScript.shootEnemy(controller.unit);
+                controller.aiPath.destination = controller.transform.position + dir;
             }
         }
     }

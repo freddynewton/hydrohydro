@@ -20,6 +20,7 @@ public class UtilityAIHandler : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public EnemyUnit unit;
     [HideInInspector] public AIPath aiPath;
+    [HideInInspector] public Seeker seeker;
 
     private List<float> utilitiesArr = new List<float>();
     private int currentAction;
@@ -30,6 +31,7 @@ public class UtilityAIHandler : MonoBehaviour
         unit = GetComponent<EnemyUnit>();
         rb = GetComponent<Rigidbody2D>();
         aiPath = GetComponent<AIPath>();
+        seeker = GetComponent<Seeker>();
         aiPathSetter();
     }
 
@@ -67,8 +69,17 @@ public class UtilityAIHandler : MonoBehaviour
 
     private void getTarget()
     {
-        target = Playercontroller.Instance.gameObject;
-        targetUnit = Playercontroller.Instance.unit;
+        if (target != null)
+        {
+            target = Playercontroller.Instance.gameObject;
+            targetUnit = Playercontroller.Instance.unit;
+            return;
+        }
+
+
+        target = GameObject.FindGameObjectWithTag("Player");
+        targetUnit = target.GetComponent<Unit>();
+
     }
 
     private void chooseHighestScoreUtility()
@@ -98,7 +109,7 @@ public class UtilityAIHandler : MonoBehaviour
                 {
                     if (target != null)
                     {
-                        float tmp = Vector2.Distance(gameObject.transform.position, target.transform.position) / unit.stats.maxRange;
+                        float tmp = Vector2.Distance(gameObject.transform.position, target.transform.position) / (unit.stats.moveSpeed * unit.stats.maxRange);
                         return tmp > 1 ? 1 : tmp;
                     }
                     return 0;

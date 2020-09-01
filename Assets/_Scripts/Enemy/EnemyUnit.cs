@@ -82,7 +82,7 @@ public class EnemyUnit : Unit
 
     private void walkAnimation()
     {
-        if (aiPath.desiredVelocity != Vector3.zero)
+        if (aiPath.desiredVelocity.x >= 0.1 || aiPath.desiredVelocity.y >= 0.1 || aiPath.desiredVelocity.x <= -0.1 || aiPath.desiredVelocity.y <= -0.1)
             animator.SetBool("isMoving", true);
         else
             animator.SetBool("isMoving", false);
@@ -92,8 +92,8 @@ public class EnemyUnit : Unit
     {
         canLookAtTarget = false;
         aiPath.isStopped = true;
-        aiPath.StopAllCoroutines();
-        aiPath.enabled = false;
+        //aiPath.StopAllCoroutines();
+        //aiPath.enabled = false;
 
         if (weapon != null) Destroy(weapon);
 

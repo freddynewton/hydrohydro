@@ -8,7 +8,8 @@ public class FollowTargetAction : ActionAI
     public override void use(UtilityAIHandler controller)
     {
         controller.aiPath.destination = controller.target.transform.position;
-        
+
+
         //controller.aiPath.FinalizeMovement(controller.target.transform.position, Quaternion.identity);
     }
 }

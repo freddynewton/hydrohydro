@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
-using UnityEditor.Android;
 
 public class Unit : MonoBehaviour
 {
@@ -16,6 +15,7 @@ public class Unit : MonoBehaviour
 
     // private variables
     private SpriteRenderer spriteRend;
+    private Material baseMat;
 
     //Hidden Objects
     [HideInInspector] public Rigidbody2D rb;
@@ -34,6 +34,7 @@ public class Unit : MonoBehaviour
         animator = GFX.gameObject.GetComponent<Animator>();
         spriteRend = GFX.gameObject.GetComponent<SpriteRenderer>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        baseMat = spriteRend.material;
     }
 
     public virtual void Update()
@@ -43,6 +44,7 @@ public class Unit : MonoBehaviour
 
     public virtual void DoDamage(GameObject bulletObj, Bullet bulletSettings)
     {
+        
         bool isCrit = UnityEngine.Random.Range(0.0f, 1.0f) <= bulletSettings.critChance;
 
         int damage = !isCrit ? bulletSettings.Damage : bulletSettings.Damage * (int)bulletSettings.critMultiplier;
@@ -70,7 +72,10 @@ public class Unit : MonoBehaviour
 
     public virtual void death(GameObject bullet)
     {
+        float side = bullet.transform.position.x > gameObject.transform.position.x ? -1 : 1;
         animator.SetTrigger("dead");
+        //rb.velocity = Vector3.zero;
+        //gameObject.transform.position = gameObject.transform.position;
 
         gameObject.GetComponent<Collider2D>().enabled = false;
         if (gameObject.layer == 9)
@@ -78,7 +83,6 @@ public class Unit : MonoBehaviour
             gameObject.GetComponent<UtilityAIHandler>().enabled = false;
         }
 
-        float side = bullet.transform.position.x > gameObject.transform.position.x ? -1 : 1;
 
         Vector2 pos = new Vector2(gameObject.transform.position.x + (UnityEngine.Random.Range(0.1f, 0.2f) * side),
             (gameObject.transform.position.y + UnityEngine.Random.Range(-0.2f, 0.2f)));
@@ -101,7 +105,6 @@ public class Unit : MonoBehaviour
 
     IEnumerator flashWhite(float time)
     {
-        Material baseMat = spriteRend.material;
         spriteRend.material = Resources.Load("Material/White Shader Material") as Material;
         yield return new WaitForSeconds(time);
         StartCoroutine(freezeGame(0.035f));

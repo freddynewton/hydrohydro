@@ -59,8 +59,6 @@ public class BulletPool : MonoBehaviour
         // spawn the bullets
         foreach (var setting in settings)
         {
-            Debug.Log(setting.BulletPF);
-
             _bullets.Add(setting, new List<BulletContainer>());
 
             for (int i = 0; i < setting.NumBullets; ++i)

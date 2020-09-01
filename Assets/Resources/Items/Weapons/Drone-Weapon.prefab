@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: -2553928465248819131}
   - component: {fileID: 3262491394362723646}
   m_Layer: 0
-  m_Name: Assault-Rifle-Smoll
+  m_Name: Drone-Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4863,11 +4863,11 @@ MonoBehaviour:
   bullet: {fileID: 11400000, guid: 0e2b0e1f6b9fe18478d3ab1902874084, type: 2}
   muzzleFlash: {fileID: 9216645917009856121}
   bulletShell: {fileID: 4035784772888296265, guid: 0fb4123f15da9f5498aa319edac7a674, type: 3}
-  attackRate: 3
+  attackRate: 6
   damage: 1
-  critChance: 0.02
+  critChance: 0
   critMultiplier: 2
-  shootKnockback: 25
+  shootKnockback: 50
   hitShootKnockback: 100
   screenShakeSetting:
     screenShakeOnHitCharacter: 0
@@ -4875,7 +4875,7 @@ MonoBehaviour:
     duration: 0.25
     "intensitivit\xE4t": 0.9
     dropOffTime: 0.5
-  projectileForce: 2
+  projectileForce: 1.5
   accuracy: 2
 --- !u!212 &2627060362446298066
 SpriteRenderer:
@@ -4917,7 +4917,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 101
-  m_Sprite: {fileID: 4870813546216226813, guid: 0f8641dac34232142b4d26e14ff6c6a7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4925,7 +4925,7 @@ SpriteRenderer:
   m_Size: {x: 0.15, y: 0.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &-2553928465248819131
@@ -4959,7 +4959,7 @@ Animator:
   m_GameObject: {fileID: 2627060362446298067}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 09ce1cd069fa0e24bbd2036d19f685a4, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

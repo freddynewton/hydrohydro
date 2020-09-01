@@ -169,6 +169,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   unit: {fileID: 0}
   aiPath: {fileID: 0}
+  seeker: {fileID: 0}
 --- !u!114 &1951199207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +192,9 @@ MonoBehaviour:
   canInteract: 0
   weapon: {fileID: 3416840001020694974}
   weaponScript: {fileID: 0}
+  aiHandler: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  targetAngle: 0
   canLookAtTarget: 1
 --- !u!50 &1951199210
 Rigidbody2D:
@@ -252,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.1
+  radius: 0.12
   height: 0.1
   repathRate: 0.3
   canSearch: 1
@@ -269,7 +273,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.3
-  pickNextWaypointDist: 0.4
+  pickNextWaypointDist: 0.03
   endReachedDistance: 0.2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1

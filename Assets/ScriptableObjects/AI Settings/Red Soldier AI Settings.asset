@@ -30,7 +30,16 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.3
+          time: 0.7
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.9
           value: 0.9952798
           inSlope: 0
           outSlope: 0
@@ -87,6 +96,7 @@ MonoBehaviour:
       input: 0
   - actionList:
     - {fileID: 11400000, guid: 8ee0450a01e690a4ebbfb5a8d1df2b14, type: 2}
+    - {fileID: 11400000, guid: ecf01100fe8155b459eb9a54469887ed, type: 2}
     settingList:
     - curve:
         serializedVersion: 2
