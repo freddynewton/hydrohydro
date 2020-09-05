@@ -103,7 +103,7 @@ public class Unit : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    IEnumerator flashWhite(float time)
+    public IEnumerator flashWhite(float time)
     {
         spriteRend.material = Resources.Load("Material/White Shader Material") as Material;
         yield return new WaitForSeconds(time);

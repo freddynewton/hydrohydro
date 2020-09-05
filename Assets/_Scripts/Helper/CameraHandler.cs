@@ -6,6 +6,7 @@ public class CameraHandler : MonoBehaviour
 {
     public static CameraHandler Instance { get; private set; }
     private Camera mainCam;
+    private Vector3 mousePos;
 
     [HideInInspector] public Transform target;
     public float smoothSpeed = 30;
@@ -45,8 +46,19 @@ public class CameraHandler : MonoBehaviour
         ).setEase(LeanTweenType.easeOutQuad);
     }
 
+    private void Update()
+    {
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+
+    }
+
     private void FixedUpdate()
     {
+        Vector3 dir = (mousePos - target.transform.position).normalized / 2;
+
+        offset.x = dir.x;
+        offset.y = dir.y;
+
         if (target != null)
         {
             Vector3 deiredPosition = target.position + offset;

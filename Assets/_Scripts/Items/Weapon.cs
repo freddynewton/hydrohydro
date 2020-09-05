@@ -28,6 +28,12 @@ public class Weapon : MonoBehaviour
     public int damage = 1;
     [Range(0, 1)] public float critChance = 0.05f;
     public int critMultiplier = 2;
+    [HideInInspector] public bool controlledByPlayer = false;
+
+    [Header("Bullet Clip Size")]
+    public int ClipSize = 7;
+    public float ReloadTime = 1.875f;
+    [HideInInspector] public int CurrentBulletAmount;
 
     [Header("Weapon Bonus Stats")]
     public float shootKnockback = 25f;
@@ -53,6 +59,7 @@ public class Weapon : MonoBehaviour
         bullet.critChance = critChance;
         bullet.critMultiplier = critMultiplier;
         bullet.screenShakeSetting = screenShakeSetting;
+        CurrentBulletAmount = ClipSize;
     }
 
     private void Start()
@@ -74,8 +81,13 @@ public class Weapon : MonoBehaviour
 
     public virtual void shoot(float Angle)
     {
-        if (timer <= 0)
+        if (CurrentBulletAmount <= 0) return;
+
+        if (timer <= 0 && (CurrentBulletAmount > 0 || !controlledByPlayer))
         {
+            timer = attackRate;
+            CurrentBulletAmount -= 1;
+
             animator.SetTrigger("shoot");
             muzzleAnimator.SetTrigger("shoot");
             bulletPool.SpawnBullet(bullet, Inventory.Instance.currentWeapon.transform.position, Inventory.Instance.currentWeapon.transform.right, Angle);
@@ -84,11 +96,26 @@ public class Weapon : MonoBehaviour
   
             spawnBulletshell();
 
-            timer = attackRate;
-
             if (screenShakeSetting.screenShakeOnShoot)
                 CameraHandler.Instance.CameraShake(screenShakeSetting.duration, screenShakeSetting.intensitivität, screenShakeSetting.dropOffTime);
+
+            CanvasManager.Instance.WeaponUi.setBulletAmount(CurrentBulletAmount, true);
+
+            if (CurrentBulletAmount == 0)
+            {
+                CanvasManager.Instance.WeaponUi.setBulletAmount(0, false);
+                StartCoroutine(reload());
+            }
         }
+    }
+
+    public IEnumerator reload()
+    {
+        CurrentBulletAmount = 0;
+        CanvasManager.Instance.StartReloadAnim(ReloadTime, ClipSize);
+        yield return new WaitForSecondsRealtime(ReloadTime);
+        CanvasManager.Instance.WeaponUi.setBulletAmount(ClipSize, true);
+        CurrentBulletAmount = ClipSize;
     }
 
     public virtual void shootEnemy(EnemyUnit unit)
@@ -119,6 +146,5 @@ public class Weapon : MonoBehaviour
         LeanTween.moveY(shell, pos.y, 1.4f).setEaseOutBounce();
         LeanTween.moveX(shell, pos.x, 1.4f).setEaseInSine();
         LeanTween.rotateLocal(shell, new Vector3(0, 0, UnityEngine.Random.Range(-360, 360)), 1.4f).setEaseInOutElastic();
-
     }
 }

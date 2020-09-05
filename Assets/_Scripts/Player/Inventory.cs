@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Inventory : MonoBehaviour
             Destroy(currentWeapon);
         currentWeapon = Instantiate(Resources.Load("Items/Weapons/Assault-Rifle-001"), Playercontroller.Instance.gameObject.transform.position + new Vector3(0.03f, -0.03f), Quaternion.identity, Inventory.Instance.gameObject.transform) as GameObject;
         curWeaponScript = currentWeapon.GetComponent<Weapon>();
+        curWeaponScript.controlledByPlayer = true;
+        CanvasManager.Instance.WeaponUi.equipweapon(currentWeapon.GetComponent<SpriteRenderer>().sprite, curWeaponScript.CurrentBulletAmount, curWeaponScript.ClipSize);
     }
 
     private void Awake()
