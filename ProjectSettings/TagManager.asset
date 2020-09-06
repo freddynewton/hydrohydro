@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Enemy
   - EnemyCollection
+  - Pathfinding
   layers:
   - Default
   - TransparentFX
