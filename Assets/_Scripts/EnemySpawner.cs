@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject[] Enemies;
 
-    private void Start()
+    private void Awake()
     {
         StartCoroutine(SpawnAnEnemy());
     }
@@ -17,9 +17,17 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnAnEnemy()
     {
-        Vector2 spawnPos = Random.insideUnitCircle.normalized * spawnRadius;
+        bool foundP = false;
 
-        Instantiate(Enemies[Random.Range(0, Enemies.Length)], spawnPos, Quaternion.identity, GameObject.FindGameObjectWithTag("EnemyCollection").transform);
+        while (!foundP)
+        {
+            Vector2 p = TilemapPCGHandler.Instance.getRandomPoint();
+            if (Vector2.Distance(transform.position, p) <= spawnRadius)
+            {
+                foundP = true;
+                Instantiate(Enemies[Random.Range(0, Enemies.Length)], p, Quaternion.identity, GameObject.FindGameObjectWithTag("EnemyCollection").transform);
+            }
+        }
 
         yield return new WaitForSecondsRealtime(spawnTimer);
         StartCoroutine(SpawnAnEnemy());

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRadius: 2.5
-  spawnTimer: 2
+  spawnTimer: 4
   Enemies:
   - {fileID: 7191441398184318000, guid: 18998564c294c3d49a1096b6da001d61, type: 3}
   - {fileID: 8877435847124678512, guid: f95a8068275db004893f6baa6ffd84af, type: 3}
