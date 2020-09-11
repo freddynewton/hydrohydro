@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Desert
   m_EditorClassIdentifier: 
   objects:
-  - type: {fileID: 1880314346459168470, guid: fd486134dbccfe7459cb509b5899bc5d, type: 3}
+  - type: {fileID: 11400000, guid: 4cf486a00caf4cf49803ddd1622737fd, type: 2}
     minAmount: 1
     maxAmount: 1
-    parent: {fileID: 0}

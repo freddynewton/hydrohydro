@@ -4867,6 +4867,10 @@ MonoBehaviour:
   damage: 1
   critChance: 0.25
   critMultiplier: 2
+  controlledByPlayer: 0
+  ClipSize: 7
+  ReloadTime: 1.25
+  CurrentBulletAmount: 0
   shootKnockback: 25
   hitShootKnockback: 100
   screenShakeSetting:
@@ -4916,7 +4920,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 101
+  m_SortingOrder: 80
   m_Sprite: {fileID: 21300000, guid: f4586599492c4224a8a29ad8a5ab330a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

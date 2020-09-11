@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355c92696eed21648aa06e27b6d6f3a0, type: 3}
   m_Name: CellularAutomata
   m_EditorClassIdentifier: 
-  width: 30
-  height: 20
-  seed: 06.09.2020 19:57:06
+  width: 50
+  height: 25
+  seed: 11.09.2020 22:08:20
   useRandomSeed: 1
-  randomFillPercent: 47
+  randomFillPercent: 49
   roomThresholdSize: 15
   wallThresholdSize: 1
   passagewaySize: 5

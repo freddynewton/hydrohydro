@@ -20,6 +20,7 @@ public class TilemapPCGHandler : MonoBehaviour
     [Header("Grid Objects")]
     public GameObject grid;
     public Material litSpriteMat;
+    [HideInInspector] public List<Tilemap> maps;
 
     [Header("Settings")]
     public bool developerMode;
@@ -61,15 +62,16 @@ public class TilemapPCGHandler : MonoBehaviour
     {
         clearMap();
         startFillMap();
+        worldSettings.init(maps[0]);
         StartCoroutine(bakeNavmesh());
         Playercontroller.Instance.gameObject.transform.position = getRandomPoint();
-        worldSettings.init();
     }
 
     private void startFillMap()
     {
         map = mapGenerator.GenerateMap();
         Tilemap tilemap = createTilemap(true);
+        maps.Add(tilemap);
 
         for (int x = 0; x < mapGenerator.width; x++)
         {
@@ -91,7 +93,7 @@ public class TilemapPCGHandler : MonoBehaviour
         resetMapMatrix(tilemap);
     }
 
-    private void resetMapMatrix(Tilemap tilemap)
+    public void resetMapMatrix(Tilemap tilemap)
     {
         int[,] newMap = new int[mapGenerator.width, mapGenerator.height];
 
@@ -131,6 +133,38 @@ public class TilemapPCGHandler : MonoBehaviour
             {
                 point = new Vector3(randomIntX * 0.16f, randomIntY * 0.16f, 0);
                 foundPoint = true;
+            }
+        }
+
+        return point;
+    }
+
+    public Vector3 getRandomPointSqrSetWalkable(int width, int height, Tilemap tilemap)
+    {
+        Vector3 point = new Vector3();
+        bool foundPoint = false;
+
+        while (!foundPoint)
+        {
+            int randomIntX = Random.Range(0, mapGenerator.width);
+            int randomIntY = Random.Range(0, mapGenerator.height);
+
+            if (randomIntX - (width / 2) - 1 > 0 && randomIntX + (width / 2) + 1 < mapGenerator.width &&
+                randomIntY - (height / 2) - 1 > 0 && randomIntY + (height / 2) + 1 < mapGenerator.height)
+            {
+                if (map[randomIntX, randomIntY] == 0)
+                {
+                    for (int x = randomIntX - 1 - width / 2; x < randomIntX + 1 + width / 2; x++)
+                    {
+                        for (int y = randomIntY - 1 - height / 2; y < randomIntY + 1 + height / 2; y++)
+                        {
+                            tilemap.SetTile(new Vector3Int(x, y, 1), tile.floorRuleTile);
+                        }
+                    }
+
+                    point = new Vector3(randomIntX, randomIntY, 1);
+                    foundPoint = true;
+                }
             }
         }
 
