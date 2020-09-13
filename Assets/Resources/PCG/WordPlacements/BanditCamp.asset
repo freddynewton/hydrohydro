@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac0e951660624d4ebb4dc78379e2dcb, type: 3}
   m_Name: BanditCamp
   m_EditorClassIdentifier: 
-  width: 5
-  height: 3
+  width: 6
+  height: 6
   objects:
   - {fileID: 4037301300833525482, guid: 00e4666439bef674ca2136c46eb58234, type: 3}
-  - {fileID: 4595758604033207299, guid: dca65aab2ab5e114ca8516b253dfc786, type: 3}
+  - {fileID: 6851897950957907780, guid: 689b5d0185f227a418baed3426e51380, type: 3}
   - {fileID: 1880314346459168470, guid: fd486134dbccfe7459cb509b5899bc5d, type: 3}
+  - {fileID: 7202038446573076870, guid: 5256227384f1f7e48911ad65f5023a5e, type: 3}

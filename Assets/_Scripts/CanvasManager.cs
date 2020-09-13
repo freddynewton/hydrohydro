@@ -39,6 +39,8 @@ public class CanvasManager : MonoBehaviour
     {
         WaterSlider.maxValue = maxWater;
 
+        
+
         LeanTween.value(WaterSlider.value, water, 0.5f).setEase(LeanTweenType.easeOutExpo).setOnUpdate((float val) =>
         {
             WaterSlider.value = val;

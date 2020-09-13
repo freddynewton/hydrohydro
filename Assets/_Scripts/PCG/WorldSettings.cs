@@ -39,6 +39,7 @@ public class WorldSettings : ScriptableObject
                         if (!setPos.Contains(new Vector2(randomx, randomy)))
                         {
                             Instantiate(_obj, new Vector2(randomx * 0.16f, randomy * 0.16f), Quaternion.identity, null);
+                            setPos.Add(new Vector2(randomx, randomy));
                             set = true;
                         }
                     }

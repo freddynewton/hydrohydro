@@ -66,6 +66,19 @@ public class PlayerUnit : Unit
         }
     }
 
+    public void SetWater(int amount)
+    {
+        if (water + amount > MaxWater)
+        {
+            water = MaxWater;
+            CanvasManager.Instance.SetWaterSlider(water, MaxWater);
+            return;
+        }
+
+        water += amount;
+        CanvasManager.Instance.SetWaterSlider(water, MaxWater);
+    }
+
     public override void DoDamage(GameObject bulletObj, Bullet bulletSettings)
     {
         base.DoDamage(bulletObj, bulletSettings);
