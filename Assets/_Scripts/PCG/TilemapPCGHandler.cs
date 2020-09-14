@@ -27,7 +27,7 @@ public class TilemapPCGHandler : MonoBehaviour
     public bool loadOnStart = false;
     public WorldSettings worldSettings;
 
-    private int[,] map;
+    [HideInInspector] public int[,] map;
 
     private void Start()
     {
@@ -101,7 +101,8 @@ public class TilemapPCGHandler : MonoBehaviour
         {
             for (int y = 0; y < mapGenerator.height; y++)
             {
-                newMap[x, y] = tilemap.GetColliderType(new Vector3Int(x, y, 1)) == Tile.ColliderType.Sprite ? 1 : 0;
+                if (map[x,y] < 2)
+                    newMap[x, y] = tilemap.GetColliderType(new Vector3Int(x, y, 1)) == Tile.ColliderType.Sprite ? 1 : 0;
             }
         }
         map = newMap;
@@ -129,7 +130,7 @@ public class TilemapPCGHandler : MonoBehaviour
             int randomIntX = Random.Range(0, mapGenerator.width);
             int randomIntY = Random.Range(0, mapGenerator.height);
 
-            if (map[randomIntX, randomIntY] == 0)
+            if (map[randomIntX, randomIntY] == 0 || map[randomIntX, randomIntY] == 2)
             {
                 point = new Vector3(randomIntX * 0.16f, randomIntY * 0.16f, 0);
                 foundPoint = true;
@@ -158,6 +159,7 @@ public class TilemapPCGHandler : MonoBehaviour
                     {
                         for (int y = randomIntY - 1 - height / 2; y < randomIntY + 1 + height / 2; y++)
                         {
+                            map[x, y] = 2;
                             tilemap.SetTile(new Vector3Int(x, y, 1), tile.floorRuleTile);
                         }
                     }

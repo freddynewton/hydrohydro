@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 6
   height: 6
+  backgroundTile: {fileID: 11400000, guid: a4795acd157b0fc47b63d967b6af81e5, type: 2}
   objects:
   - {fileID: 4037301300833525482, guid: 00e4666439bef674ca2136c46eb58234, type: 3}
   - {fileID: 6851897950957907780, guid: 689b5d0185f227a418baed3426e51380, type: 3}

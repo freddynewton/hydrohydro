@@ -25,7 +25,6 @@ public class WorldSettings : ScriptableObject
             for (int i = 0; i < UnityEngine.Random.Range(obj.minAmount, obj.maxAmount + 1); i++)
             {
                 Vector3 pos = TilemapPCGHandler.Instance.getRandomPointSqrSetWalkable(obj.type.width, obj.type.height, tilemap);
-                List<Vector2> setPos = new List<Vector2>();
                 
                 foreach (GameObject _obj in obj.type.objects)
                 {
@@ -33,13 +32,13 @@ public class WorldSettings : ScriptableObject
 
                     while (!set)
                     {
-                        int randomx = (int)UnityEngine.Random.Range(pos.x - obj.type.width / 2, pos.x + obj.type.width / 2);
-                        int randomy = (int)UnityEngine.Random.Range(pos.y - obj.type.height / 2, pos.y + obj.type.height / 2);
+                        int randomx = (int)UnityEngine.Random.Range(pos.x - obj.type.width / 2 - 1, pos.x + obj.type.width / 2 - 1);
+                        int randomy = (int)UnityEngine.Random.Range(pos.y - obj.type.height / 2 - 1, pos.y + obj.type.height / 2 - 1);
 
-                        if (!setPos.Contains(new Vector2(randomx, randomy)))
+                        if (TilemapPCGHandler.Instance.map[randomx, randomy] == 2)
                         {
+                            TilemapPCGHandler.Instance.map[randomx, randomy] = 3;
                             Instantiate(_obj, new Vector2(randomx * 0.16f, randomy * 0.16f), Quaternion.identity, null);
-                            setPos.Add(new Vector2(randomx, randomy));
                             set = true;
                         }
                     }
